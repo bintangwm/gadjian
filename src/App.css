@@ -1,7 +1,181 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;1,300&family=Roboto:wght@100;300;400&display=swap');
+/* font-family: 'Raleway', sans-serif; */
+/* font-family: 'Roboto', sans-serif; */
+
+* {
+  font-family: 'Roboto', sans-serif;
+  color: #656d79;
+  text-decoration: none;
+  list-style: none;
 }
 
+.personnel-list-page {
+  background-color: wheat;
+}
+
+.main-content {
+  display: flex;
+  position: relative;
+}
+
+/* Sidebar */
+.main-content .sidebar {
+  position: fixed;
+  width: 320px;
+  height: 100%;
+  padding-top: 20px;
+}
+
+.main-content .sidebar ul li {
+  padding: 15px 0px;
+}
+
+.main-content .sidebar ul li a {
+  display: block;
+}
+
+.sidebar-icon {
+  color: black;
+}
+
+.sidebar-icon i {
+  color: black;
+  width: 25px;
+}
+
+/* MAIN CONTENT */
+.main-content .personnel-list-page {
+  width: 100%;
+  margin-left: 320px;
+  background-color: rgba(233, 230, 230, 0.562);
+  padding: 40px;
+}
+
+/* maincontent - HEAD */
+.main-content .personnel-list-page .personnel-head {
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  /* height: 100px; */
+  display: flex;
+}
+
+.personnel-list-title {
+  color: #00c3ca;
+  font-weight: bold;
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.personnel-list-text {
+  padding: 0px;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0px;
+}
+
+.personnel-option {
+  display: flex;
+  align-items: center;
+}
+
+.personnel-search {
+  background-color: white;
+  width: 220px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  border-color: #9aa2ad;
+  border-width: 1px;
+  border-style: solid;
+  padding: 10px
+}
+
+.personnel-search input {
+	border: 0;
+  outline: none;
+  width: 100%;
+	font-size: 15px;
+}
+
+.personnel-search i {
+  color: #00c3ca;
+	font-size: 25px;
+	margin-right: 5px;
+}
+
+.personnel-add {
+  color: white;
+  background-color: #37babe;
+  margin-left: 5px;
+  width: 220px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0px 10px;
+  justify-content: space-between;
+}
+
+.personnel-add i {
+  color: white;
+  font-size: 20px;
+}
+.personnel-add span {
+  color: white;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+
+/* maincontent - PERSONNEL LIST */
+.main-content .personnel-list-page .personnel-list-box {
+  /* background-color: violet; */
+  /* padding: 0px 20px; */
+  width: 100%;
+  /* height: 100%; */
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Personnel card */
+.personnel-card {
+  width: 350px;
+  background-color: #fff;
+  height: 35rem;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 17px;  
+}
+
+.personnel-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: darkgrey; */
+  border-width: 2px;
+}
+
+.personnel-card-header i {
+  font-size: 20px;
+}
+
+.personnel-avatar {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.personnel-avatar img {
+  border-radius: 50%;
+  height: 235px;
+  width: auto;
+  margin-bottom: 1rem;
+}
+
+
+/* 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -35,4 +209,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

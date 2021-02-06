@@ -1,10 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPersonnelList } from '../actions'
-import avatar_img from '../assets/img_avatar2.png'
+import { PersonnelCard } from '../components/index'
 
 export default function PersonnelList() {
-  // const personnels = useSelector((state) => state.personnels)
+  const personnelList = useSelector((state) => state.personnels)
+  // const personnelList = useSelector((state) => state.personnelList)
+  // const [personnelList, setPersonnels] = useState([])
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -13,54 +15,48 @@ export default function PersonnelList() {
   }, [dispatch])
 
   return (
-    <div>
+    <div className="personnel-list-page">
       <div className="personnel-head justify-content-between">
         <div>
-          <p>Personnel List</p>
-          <p>List of all personnels</p>
+          <p className="personnel-list-title">PERSONNEL LIST</p>
+          <p className="personnel-list-text">List of all personnels</p>
         </div>
-        <div>
-          <div className="personnel-find">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            <span> Find Personnel</span>
+        <div className="personnel-option">
+          <div className="personnel-search">
+            <i className="fa fa-search" aria-hidden="true"></i>
+            <input type="text" placeholder="Find Personnels"/>
           </div>
           <div className="personnel-add">
-            <span>ADD PERSONNEL </span>
-            <i class="fa fa-plus" aria-hidden="true"></i>
+            <span>ADD PERSONNEL</span>
+            <i className="fa fa-plus" aria-hidden="true"></i>
           </div>
         </div>
       </div>
-      <div className="container">
-        <div className="card">
-          <div className="card-header justify-content-between">
-            <div className="personnel-id">
-              <span>Personnel ID: </span>
-              <span>123456</span>
-            </div>
-            <div>
-              <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
-            </div>
-          </div>
-          <div className="card-body">
-            <p className="personnel-title">Name</p>
-            <p className="personnel-content">First Name</p>
-            <p className="personnel-title">Telephone</p>
-            <p className="personnel-content">0812-1844-9933</p>
-            <p className="personnel-title">Birthday</p>
-            <p className="personnel-content">DD-MM</p>
-            <p className="personnel-title">Email</p>
-            <p className="personnel-content">Email Adress</p>
-          </div>
-        </div>
+      <div className="personnel-list-box">
+        {/* <div className="row justify-content-between"> */}
+          {
+            (personnelList.length > 0)
+                ? personnelList.map((personnel, index) => {
+                  return(
+                    <PersonnelCard
+                      key={index}
+                      personnel={personnel}
+                    />
+                  )
+                })
+                : <div>kosong</div>
+          }
+        {/* </div> */}
+
       </div>
       <div className="option">
         <div className="prev-page">
-          <i class="fa fa-angle-left" aria-hidden="true"></i>
+          <i className="fa fa-angle-left" aria-hidden="true"></i>
           Previous Page
         </div>
         <div className="next-page">
           Next Page
-          <i class="fa fa-angle-right" aria-hidden="true"></i>
+          <i className="fa fa-angle-right" aria-hidden="true"></i>
         </div>
       </div>
     </div>
