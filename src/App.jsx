@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+// import './style/css/main.css';
 import { Provider } from 'react-redux';
 import store from './store';
 import PersonnelList from './pages/Personnels';
@@ -16,8 +17,10 @@ function App() {
     // </div>
     <Provider store={ store }>
       <Navbar/>
-      <Sidebar/>
-      <PersonnelList/>
+      <div className="main-content">
+        <Sidebar/>
+        <PersonnelList/>
+      </div>
     </Provider>
   );
 }
