@@ -4,6 +4,7 @@ import React, {
 } from 'react'
 import avatar from '../assets/img_avatar2.png'
 import './Navbar.css'
+import '../App.scss';
 
 export default function Navbar() {
   const [username, setUsername] = useState('')
@@ -15,7 +16,7 @@ export default function Navbar() {
   return (
     <nav className="navbar navbar-white">
       <div className="nav-item">
-        <div className="user-name">
+        <div className="user-name non-mobile">
           <span className="user-greetings">Hallo, </span>
           <span className="user-username">{ username }</span>
         </div>

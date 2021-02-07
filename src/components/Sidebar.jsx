@@ -3,7 +3,7 @@ import gadjianLogo from '../assets/gadjian_logo_white.png'
 
 function Sidebar() {
   return (
-    <div className="sidebar">
+    <div className="sidebar non-mobile">
       <div className="sidebar-brand">
         <img src={ gadjianLogo } alt="logo gadjian"/>
       </div>
