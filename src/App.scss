@@ -56,11 +56,14 @@ button:focus{
 
 .sidebar-item {
   color: black;
+  font-size: 18px;
 }
 
 .sidebar-item i {
   color: black;
-  width: 25px;
+  width: 22px;
+  font-size: 25px;
+  margin-right: 1rem;
 }
 
 /* MAIN CONTENT */
@@ -72,13 +75,15 @@ button:focus{
 }
 
 /* maincontent - HEAD */
-.personnel-list-page .personnel-head {
+.personnel-head {
   width: 100%;
   background-color: white;
   padding: 2rem;
   /* height: 100px; */
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+  flex-flow: wrap;
 }
 
 .personnel-list-title {
@@ -99,6 +104,9 @@ button:focus{
 .personnel-option {
   display: flex;
   align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-flow: wrap;
 }
 
 .personnel-search {
@@ -113,7 +121,7 @@ button:focus{
   padding: 10px
 }
 
-.personnel-search input {
+.search-personnel-input {
 	border: 0;
   outline: none;
   width: 100%;
@@ -152,21 +160,26 @@ button:focus{
 
 /* maincontent - PERSONNEL LIST */
 .personnel-list-page .personnel-list-box {
-  /* background-color: violet; */
-  /* padding: 0px 20px; */
   width: 100%;
-  /* height: 100%; */
   margin-top: 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 
+.personnel-list-box .row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-flow: wrap;
+}
 /* Personnel card */
 .personnel-card {
   width: 20rem;
   background-color: #fff;
-  height: 33rem;
+  height: 33em;
   margin: 0px;
+  margin-bottom: 10px;
   padding: 0px;
   border-radius: 17px;
   border: transparent;
@@ -190,26 +203,30 @@ button:focus{
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 1rem;
 }
 
 .personnel-avatar img {
   border-radius: 50%;
+  font-size: 18px;
+  font-weight: 400;
   height: 220px;
-  width: auto;
-  margin-bottom: 1rem;
+  width: 220px;
 }
 
 .personnel-id {
   color: #03b6bd;
+  font-size: 18px;
+  font-weight: 400;
 }
 
-.personnel-title {
+.bio-title {
   font-size: 15px;
   font-weight: bold;
   margin: 0px;
 }
 
-.personnel-content {
+.bio-content {
   font-size: 18px;
   font-weight: 400;
   margin: 0px;
@@ -220,8 +237,6 @@ button:focus{
 .personnel-card-option {
   display: flex;
   justify-content: center;
-  /* width: 100%; */
-  /* background-color: aqua; */
 }
 
 .page-option {
@@ -229,19 +244,129 @@ button:focus{
   margin: 60px 20px 0px;
   display: flex;
   align-items: center;
+  color: black;
 }
 
 .page-option i {
   margin: 0px 10px;
   font-size: 30px;
-  /* font-weight: 300; */
+  color: black;
 }
 
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.option-inactive, .option-inactive i {
+  color: gray;
+  cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+
+  .non-mobile {
+    display: none;
+    visibility: visible;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-content {
+    margin: 0px;
   }
-}  */
+
+  .personnel-list-page {
+    padding: 30px;
+
+    .personnel-head {
+
+      .personnel-option{
+        width: 100%;
+        margin-bottom: 10px;
+        
+        .personnel-search {
+          width: 100%;
+          margin: 5px;
+          padding: 20px;
+          i {
+            font-size: 35px;
+          }
+        } 
+
+        .personnel-add {
+          width: 100%;
+          margin: 5px;
+          font-size: 25px;
+          font-weight: bolder;
+          padding: 0px 20px;
+
+          i {
+            font-size: 40px;
+          }
+        }
+      }
+    }
+
+    .personnel-list-box {
+      .row {
+        .personnel-card {
+          width: 100%;
+          height: auto;
+
+          .personnel-card-header {
+            padding: 1rem 2.5rem;
+            .personnel-id-text, .personnel-id {
+              font-size: 24px;
+            }
+
+            i {
+              font-size: 40px;
+            }
+          }
+
+          .card-body {
+            padding: 900px;
+            display: flex;
+            justify-content: flex-start;
+            padding: 2.5em;
+            margin: 0px;
+
+            .personnel-avatar {
+              justify-content: flex-start;
+              width: 40%;
+              margin-right: 2.5em;
+              margin-bottom: 0px;
+              img {
+                width: 200px;
+                height: 200px;
+              }
+            }
+
+            .personnel-bio {
+              width: 70%;
+              // background-color: wheat;
+              padding: 1rem;
+            }
+            
+          }
+        }
+      }
+    }
+  }
+
+  .bio-title {
+    font-size: 20px;
+  }
+
+  .bio-content {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .personnel-list-title {
+    font-size: 60px;
+    font-weight: bolder;
+  }
+
+  .personnel-list-text {
+    font-size: 40px;
+  }
+
+  .search-personnel-input {
+    font-size: 25px;
+  }
+}

@@ -1,5 +1,5 @@
 // import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 // import './style/css/main.css';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -11,10 +11,6 @@ import {
 
 function App() {
   return (
-    // <div className="App">
-    //   <header className="App-header">
-    //   </header>
-    // </div>
     <Provider store={ store }>
         <Sidebar/>
         <Navbar/>

@@ -23,7 +23,7 @@ export default function PersonnelList() {
   useEffect(() => {
     // inisialisasi personnel yang akan ditampilkan
     setPersonnels(personnelList.slice(0, divider))
-    if (personnelList[(page * divider)]) {
+    if (personnelList[divider]) {
       setNextPage(true)
     } else {
       setNextPage(false)
@@ -91,37 +91,45 @@ export default function PersonnelList() {
           <div className="personnel-search">
             <i className="fa fa-search" aria-hidden="true"></i>
             <form onSubmit={(e) => submitSearchPersonnel(e)}>
-              <input onChange={(e) => handleSearchPersonnelInput(e)} value={ searchPersonnel } type="text" placeholder="Find Personnels"/>
+              <input onChange={(e) => handleSearchPersonnelInput(e)} value={ searchPersonnel } type="text" placeholder="Find Personnels" className="search-personnel-input"/>
             </form>
           </div>
           <div className="personnel-add">
-            <span>ADD PERSONNEL</span>
+            ADD PERSONNEL
             <i className="fa fa-plus" aria-hidden="true"></i>
           </div>
         </div>
       </div>
       <div className="personnel-list-box">
-        {
-          (personnels.length > 0)
-              ? personnels.map((personnel, index) => {
-                return(
-                  <PersonnelCard
-                    key={index}
-                    personnel={personnel}
-                  />
-                )
-              })
-              : <div>kosong</div>
-        }
+        <div className="row">
+          {
+            (personnels.length > 0)
+                ? personnels.map((personnel, index) => {
+                  return(
+                    <PersonnelCard
+                      key={index}
+                      personnel={personnel}
+                    />
+                  )
+                })
+                : <div>kosong</div>
+          }
+        </div>
       </div>
       <div className="personnel-card-option">
-        <button onClick={ () => handleChangePage('prev') } className="prev-page page-option button">
+        <button 
+          onClick={ () => handleChangePage('prev') } 
+          className={`prev-page page-option button ${ prevPage ? "": "option-inactive"}`}
+        >
           <i className="fa fa-angle-left" aria-hidden="true"></i>
           Previous Page
         </button>
-        <button onClick={ () => handleChangePage('next') } className="next-page page-option button">
+        <button 
+          onClick={ () => handleChangePage('next') } 
+          className={`next-page page-option button ${ nextPage ? "": "option-inactive"}`}
+        >
           Next Page
-          <i className="fa fa-angle-right" aria-hidden="true"></i>
+          <i className="fa fa-angle-right page-option-icon" aria-hidden="true"></i>
         </button>
       </div>
     </div>
