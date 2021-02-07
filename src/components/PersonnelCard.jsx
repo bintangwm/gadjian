@@ -12,7 +12,7 @@ export default function PesonnelCard(props) {
       </div>
       <div className="card-body">
         <div className="personnel-avatar">
-          <img src={ personnel.picture.large } alt="Photo"/>
+          <img src={ personnel.picture.large } alt=""/>
         </div>
         <p className="personnel-title">Name</p>
         <p className="personnel-content">{ personnel.name.first + ' ' + personnel.name.last }</p>

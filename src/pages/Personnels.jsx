@@ -1,22 +1,88 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchPersonnelList } from '../actions'
+import { 
+  fetchPersonnelList,
+  searchPersonnelLocal
+} from '../actions'
 import { PersonnelCard } from '../components/index'
 
 export default function PersonnelList() {
-  const personnelList = useSelector((state) => state.personnels)
-  // const personnelList = useSelector((state) => state.personnelList)
-  // const [personnelList, setPersonnels] = useState([])
+  const personnelList = useSelector((state) => state.personnelListDisplay)
+  const [nextPage, setNextPage] = useState(false)
+  const [prevPage, setPrevPage] = useState(false)
+  const [personnels, setPersonnels] = useState([])
+  const [searchPersonnel, setSearchPersonnel] = useState('')
+  const [page, setPage] = useState(0)
+  const divider = 4
   const dispatch = useDispatch()
 
   useEffect(() => {
-    // console.log('start');
     dispatch(fetchPersonnelList())
   }, [dispatch])
+  
+  useEffect(() => {
+    // inisialisasi personnel yang akan ditampilkan
+    setPersonnels(personnelList.slice(0, divider))
+    if (personnelList[(page * divider)]) {
+      setNextPage(true)
+    } else {
+      setNextPage(false)
+    }
+    // eslint-disable-next-line
+  }, [personnelList])
+
+  function handleChangePage(order) {
+    let tempPage = null
+    let tempPersonnels = []
+    let startIndex = null
+    switch (order) {
+      case 'next':
+        if (nextPage) {
+          tempPage = page + 1 
+          startIndex = (tempPage * divider)
+          tempPersonnels = personnelList.slice(startIndex, startIndex + divider)
+          setPage(tempPage)
+          setPersonnels(tempPersonnels)
+          setPrevPage(true)
+          if (!personnelList[((tempPage + 1) * divider)]) {
+            setNextPage(false)
+            console.log('next disable');
+          }
+        }
+        break;
+      case 'prev':
+        if (prevPage) {
+          tempPage = page - 1
+          startIndex = (tempPage * divider)
+          tempPersonnels = personnelList.slice(startIndex, startIndex + divider)
+          setPage(tempPage)
+          setPersonnels(tempPersonnels)
+          setNextPage(true)
+          if (!personnelList[((tempPage - 1) * divider)]) {
+            setPrevPage(false)
+            console.log('prev disable');
+          }
+        }
+        break;
+      default:
+        console.log('wrong order');
+        break;
+    }
+    console.log(tempPersonnels);
+  }
+
+  function handleSearchPersonnelInput(e) {
+    setSearchPersonnel(e.target.value)
+  }
+
+  function submitSearchPersonnel(e) {
+    e.preventDefault()
+    dispatch(searchPersonnelLocal(searchPersonnel))
+  }
 
   return (
     <div className="personnel-list-page">
-      <div className="personnel-head justify-content-between">
+      <div className="personnel-head">
         <div>
           <p className="personnel-list-title">PERSONNEL LIST</p>
           <p className="personnel-list-text">List of all personnels</p>
@@ -24,7 +90,9 @@ export default function PersonnelList() {
         <div className="personnel-option">
           <div className="personnel-search">
             <i className="fa fa-search" aria-hidden="true"></i>
-            <input type="text" placeholder="Find Personnels"/>
+            <form onSubmit={(e) => submitSearchPersonnel(e)}>
+              <input onChange={(e) => handleSearchPersonnelInput(e)} value={ searchPersonnel } type="text" placeholder="Find Personnels"/>
+            </form>
           </div>
           <div className="personnel-add">
             <span>ADD PERSONNEL</span>
@@ -33,31 +101,28 @@ export default function PersonnelList() {
         </div>
       </div>
       <div className="personnel-list-box">
-        {/* <div className="row justify-content-between"> */}
-          {
-            (personnelList.length > 0)
-                ? personnelList.map((personnel, index) => {
-                  return(
-                    <PersonnelCard
-                      key={index}
-                      personnel={personnel}
-                    />
-                  )
-                })
-                : <div>kosong</div>
-          }
-        {/* </div> */}
-
+        {
+          (personnels.length > 0)
+              ? personnels.map((personnel, index) => {
+                return(
+                  <PersonnelCard
+                    key={index}
+                    personnel={personnel}
+                  />
+                )
+              })
+              : <div>kosong</div>
+        }
       </div>
-      <div className="option">
-        <div className="prev-page">
+      <div className="personnel-card-option">
+        <button onClick={ () => handleChangePage('prev') } className="prev-page page-option button">
           <i className="fa fa-angle-left" aria-hidden="true"></i>
           Previous Page
-        </div>
-        <div className="next-page">
+        </button>
+        <button onClick={ () => handleChangePage('next') } className="next-page page-option button">
           Next Page
           <i className="fa fa-angle-right" aria-hidden="true"></i>
-        </div>
+        </button>
       </div>
     </div>
   )

@@ -1,26 +1,30 @@
 import React from 'react'
+import gadjianLogo from '../assets/gadjian_logo_white.png'
 
 function Sidebar() {
   return (
     <div className="sidebar">
+      <div className="sidebar-brand">
+        <img src={ gadjianLogo } alt="logo gadjian"/>
+      </div>
       <ul>
         <li>
-          <a href="#" className="sidebar-icon">
+          <button className="sidebar-item button">
               <i className="fa fa-home" aria-hidden="true"></i>
               Beranda
-          </a>
+          </button>
         </li> 
         <li>
-          <a href="#" className="sidebar-icon">
+          <button className="sidebar-item button">
               <i className="fa fa-users" aria-hidden="true"></i>
               Personnel List
-          </a>
+          </button>
         </li> 
         <li>
-          <a href="#" className="sidebar-icon">
+          <button className="sidebar-item button">
               <i className="fa fa-calendar" aria-hidden="true"></i>
               Daily Attendance
-          </a>
+          </button>
         </li> 
       </ul>
     </div>

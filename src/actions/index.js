@@ -20,3 +20,12 @@ export function fetchPersonnelList() {
       })
   }
 }
+
+export function searchPersonnelLocal(query) {
+  return {
+    type: 'SEARCH_PERSONNEL_LOCAL',
+    payload: {
+      query
+    }
+  }
+}

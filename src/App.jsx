@@ -16,11 +16,11 @@ function App() {
     //   </header>
     // </div>
     <Provider store={ store }>
-      <Navbar/>
-      <div className="main-content">
         <Sidebar/>
-        <PersonnelList/>
-      </div>
+        <Navbar/>
+        <div className="main-content">
+          <PersonnelList/>
+        </div>
     </Provider>
   );
 }
