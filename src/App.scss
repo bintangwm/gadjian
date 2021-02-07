@@ -2,6 +2,11 @@
 /* font-family: 'Raleway', sans-serif; */
 /* font-family: 'Roboto', sans-serif; */
 
+// font color
+$cyan_gadjian: #00c3ca;
+$light_grey: rgba(233, 230, 230, 0.562);
+$dark_grey: gray;
+
 * {
   font-family: 'Roboto', sans-serif;
   color: #656d79;
@@ -70,7 +75,7 @@ button:focus{
 .personnel-list-page {
   width: 100%;
   /* height: 100vh; */
-  background-color: rgba(233, 230, 230, 0.562);
+  background-color: $light_grey;
   padding: 3.5rem 3.5rem 1.5rem 3.5rem;
 }
 
@@ -87,7 +92,7 @@ button:focus{
 }
 
 .personnel-list-title {
-  color: #00c3ca;
+  color: $cyan_gadjian;
   font-weight: bold;
   font-size: 30px;
   padding: 0px;
@@ -115,7 +120,7 @@ button:focus{
   height: 60px;
   display: flex;
   align-items: center;
-  border-color: #9aa2ad;
+  border-color: $light_grey;
   border-width: 1px;
   border-style: solid;
   padding: 10px
@@ -129,14 +134,14 @@ button:focus{
 }
 
 .personnel-search i {
-  color: #00c3ca;
+  color: $cyan_gadjian;
 	font-size: 25px;
 	margin-right: 5px;
 }
 
 .personnel-add {
   color: white;
-  background-color: #37babe;
+  background-color: $cyan_gadjian;
   margin-left: 15px;
   width: 230px;
   height: 60px;
@@ -215,7 +220,7 @@ button:focus{
 }
 
 .personnel-id {
-  color: #03b6bd;
+  color: $cyan_gadjian;
   font-size: 18px;
   font-weight: 400;
 }
@@ -254,7 +259,7 @@ button:focus{
 }
 
 .option-inactive, .option-inactive i {
-  color: gray;
+  color: $dark_grey;
   cursor: default;
 }
 
